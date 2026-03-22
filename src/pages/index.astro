@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import HeroIntro from '../components/sections/HeroIntro.astro';
 import MeetingAnimation from '../components/interactive/MeetingAnimation';
+import TimeStats from '../components/interactive/TimeStats';
 import MemoriesTimeline from '../components/sections/MemoriesTimeline';
+import HorizontalGallery from '../components/interactive/HorizontalGallery';
 import JourneyPath from '../components/interactive/JourneyPath';
 import SwipeReasons from '../components/interactive/SwipeReasons';
 import FinalLetter from '../components/sections/FinalLetter';
@@ -35,7 +37,9 @@ const memories = [
   <div class="mx-auto w-full max-w-md">
     <HeroIntro />
     <MeetingAnimation client:load />
+    <TimeStats client:visible />
     <MemoriesTimeline memories={memories} client:visible />
+    <HorizontalGallery client:visible />
     <JourneyPath client:visible />
     <SwipeReasons client:visible />
     <FinalLetter client:visible />

@@ -23,10 +23,15 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-base text-primary font-sans antialiased selection:bg-accent selection:text-white;
-    min-height: 100dvh;
+    min-height: 100svh;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
   }
 }
 

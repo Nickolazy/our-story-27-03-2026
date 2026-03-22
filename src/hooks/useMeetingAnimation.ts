@@ -52,11 +52,10 @@ export function mountMeetingAnimation(
       scrollTrigger: {
         trigger: el,
         start: 'top top',
-        end: '+=180%',
-        scrub: 0.6,
+        end: '+=200%',
+        scrub: 1.5,
         pin: true,
-        anticipatePin: 1,
-      },
+      }
     });
 
     tl.to(boy, { xPercent: 0, ease: 'none' }, 0)

@@ -6,7 +6,7 @@ export default function FinalLetter() {
 
   return (
     <section
-      className="flex min-h-[100dvh] w-full flex-col items-center justify-center px-4 py-32"
+      className="flex min-h-[100svh] w-full flex-col items-center justify-center px-4 py-32"
       aria-label="Письмо"
     >
       <div className="w-full max-w-md">

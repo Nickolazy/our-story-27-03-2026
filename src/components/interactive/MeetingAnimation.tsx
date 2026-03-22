@@ -25,7 +25,7 @@ export default function MeetingAnimation() {
       className="relative w-full py-24"
       aria-label="Как мы встретились"
     >
-      <div className="flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4">
+      <div className="flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden px-4">
         <div className="relative flex h-[min(70dvh,520px)] w-full max-w-md items-center justify-center">
           <div
             ref={boy}
