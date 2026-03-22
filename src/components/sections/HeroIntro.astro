@@ -1,0 +1,81 @@
+---
+---
+
+<section
+  class="hero-intro flex min-h-[100dvh] flex-col items-center justify-center px-6 py-24 text-center"
+  aria-label="Вступление"
+>
+  <h1 class="hero-intro__title font-serif text-[2.5rem] leading-tight text-primary">
+    Говорят, случайности не случайны...
+  </h1>
+  <p class="hero-intro__sub mt-6 max-w-sm text-base leading-relaxed text-primary/90">
+    Прокрути вниз, чтобы начать нашу историю.
+  </p>
+  <div
+    class="hero-intro__cue mt-16 flex flex-col items-center gap-2 text-[0.75rem] uppercase tracking-widest text-primary/60"
+    aria-hidden="true"
+  >
+    <span>Дальше</span>
+    <span class="hero-intro__arrow">↓</span>
+  </div>
+</section>
+
+<style>
+  .hero-intro__title,
+  .hero-intro__sub,
+  .hero-intro__cue {
+    opacity: 0;
+    animation: hero-fade 1.2s ease-out forwards;
+  }
+
+  .hero-intro__sub {
+    animation-delay: 0.2s;
+  }
+
+  .hero-intro__cue {
+    animation-delay: 0.5s;
+  }
+
+  .hero-intro__arrow {
+    animation: scroll-cue 1.8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 8px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes scroll-cue {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate3d(0, 6px, 0);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-intro__title,
+    .hero-intro__sub,
+    .hero-intro__cue {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-intro__arrow {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroIntro from '../components/sections/HeroIntro.astro';
+import MeetingAnimation from '../components/interactive/MeetingAnimation';
+import MemoriesTimeline from '../components/sections/MemoriesTimeline';
+import JourneyPath from '../components/interactive/JourneyPath';
+import SwipeReasons from '../components/interactive/SwipeReasons';
+import FinalLetter from '../components/sections/FinalLetter';
+import astroImg from '../assets/astro.svg';
+import bgImg from '../assets/background.svg';
+
+const memories = [
+  {
+    src: astroImg.src,
+    width: astroImg.width,
+    height: astroImg.height,
+    alt: 'Заглушка вместо личного фото — замени своим снимком.',
+    caption: 'Первый кадр, который хочется хранить.',
+    date: '2023-03-01',
+    dateLabel: 'Март 2023',
+  },
+  {
+    src: bgImg.src,
+    width: bgImg.width,
+    height: bgImg.height,
+    alt: 'Заглушка вместо личного фото — замени своим снимком.',
+    caption: 'Тёплый вечер и общий смех.',
+    date: '2023-07-15',
+    dateLabel: 'Июль 2023',
+  },
+];
+---
+
+<Layout title="Наша история">
+  <div class="mx-auto w-full max-w-md">
+    <HeroIntro />
+    <MeetingAnimation client:load />
+    <MemoriesTimeline memories={memories} client:visible />
+    <JourneyPath client:visible />
+    <SwipeReasons client:visible />
+    <FinalLetter client:visible />
+  </div>
+</Layout>
