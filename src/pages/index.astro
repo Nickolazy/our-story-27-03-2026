@@ -5,9 +5,14 @@ import MeetingAnimation from '../components/interactive/MeetingAnimation';
 import TimeStats from '../components/interactive/TimeStats';
 import MemoriesTimeline from '../components/sections/MemoriesTimeline';
 import HorizontalGallery from '../components/interactive/HorizontalGallery';
+import SpotlightReveal from '../components/interactive/SpotlightReveal';
+import VinylPlayer from '../components/interactive/VinylPlayer';
 import JourneyPath from '../components/interactive/JourneyPath';
 import SwipeReasons from '../components/interactive/SwipeReasons';
+import WorldToggle from '../components/interactive/WorldToggle';
+import HoldToReveal from '../components/interactive/HoldToReveal';
 import FinalLetter from '../components/sections/FinalLetter';
+import StoryContinues from '../components/interactive/StoryContinues';
 import astroImg from '../assets/astro.svg';
 import bgImg from '../assets/background.svg';
 
@@ -33,15 +38,25 @@ const memories = [
 ];
 ---
 
-<Layout title="Наша история">
+<Layout title="Наша история ❤️">
   <div class="mx-auto w-full max-w-md">
     <HeroIntro />
+    <VinylPlayer client:visible />
+
     <MeetingAnimation client:load />
     <TimeStats client:visible />
+    <WorldToggle client:visible />
     <MemoriesTimeline memories={memories} client:visible />
-    <HorizontalGallery client:visible />
+  </div>
+
+  <SpotlightReveal client:visible />
+
+  <HorizontalGallery client:visible />
+
+  <div class="mx-auto w-full max-w-md">
     <JourneyPath client:visible />
     <SwipeReasons client:visible />
-    <FinalLetter client:visible />
+    <HoldToReveal client:visible />
+    <StoryContinues client:visible />
   </div>
 </Layout>

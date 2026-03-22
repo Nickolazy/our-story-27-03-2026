@@ -55,8 +55,8 @@ export default function TimeStats() {
       aria-label="Статистика любви"
     >
       <div className="max-w-md w-full flex flex-col gap-16">
-        <h2 className="text-center font-sans text-sm uppercase tracking-[0.3em] text-accent/80 mb-4">
-          2 года — это много или мало?
+        <h2 className="text-center font-sans text-sm uppercase tracking-[0.3em] text-accent mb-4">
+          Это много или мало?
         </h2>
 
         {STATS.map((stat, index) => (

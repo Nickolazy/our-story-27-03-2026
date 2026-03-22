@@ -52,7 +52,7 @@ export function mountMeetingAnimation(
       scrollTrigger: {
         trigger: el,
         start: 'top top',
-        end: '+=200%',
+        end: '+=120%',
         scrub: 1.5,
         pin: true,
       }

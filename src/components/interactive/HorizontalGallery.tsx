@@ -19,21 +19,19 @@ export default function HorizontalGallery() {
     const scrollWrapper = scrollWrapperRef.current;
     if (!container || !scrollWrapper) return;
 
-    // Используем matchMedia для безопасной инициализации
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Чтобы не лагало, анимируем не пиксели, а проценты сдвига
       gsap.to(scrollWrapper, {
-        x: () => -(scrollWrapper.scrollWidth - window.innerWidth + 48), // 48 - это padding
+        x: () => -(scrollWrapper.scrollWidth - window.innerWidth + 48),
         ease: 'none',
         scrollTrigger: {
           trigger: container,
           start: 'top top',
-          end: '+=200%', // Даем 2 экрана высоты на прокрутку галереи (плавнее)
+          end: '+=200%',
           pin: true,
-          scrub: 1, // Мягкая интерполяция
-          invalidateOnRefresh: true, // Пересчет при ресайзе/появлении адресной строки
+          scrub: 1,
+          invalidateOnRefresh: true,
         },
       });
     });
@@ -47,7 +45,6 @@ export default function HorizontalGallery() {
         Каждый миг с тобой
       </h2>
 
-      {/* will-change-transform - ОЧЕНЬ ВАЖНО для 60FPS на телефоне */}
       <div
         ref={scrollWrapperRef}
         className="flex gap-6 px-6 items-center h-[60vh] mt-10 w-max will-change-transform"
@@ -55,9 +52,9 @@ export default function HorizontalGallery() {
         {PHOTOS.map((photo, i) => (
           <div
             key={i}
-            className={`w-[75vw] max-w-[300px] aspect-[4/5] shrink-0 rounded-2xl bg-white shadow-xl border border-accent/20 p-3 transform transition-transform hover:scale-105 ${i % 2 === 0 ? 'rotate-[-2deg]' : 'rotate-[2deg]'}`}
+            className={`w-[75vw] max-w-[300px] aspect-[4/5] shrink-0 rounded-lg bg-white shadow-xl border border-accent/20 p-3 transform transition-transform hover:scale-105 ${i % 2 === 0 ? 'rotate-[-2deg]' : 'rotate-[2deg]'}`}
           >
-            <div className="w-full h-full bg-rose-50 rounded-xl flex items-center justify-center text-primary/50 overflow-hidden relative">
+            <div className="w-full h-full bg-rose-50 rounded-md flex items-center justify-center text-primary/50 overflow-hidden relative">
               {/* Замени на <img src={...} class="w-full h-full object-cover" /> */}
               {photo}
             </div>

@@ -2,49 +2,61 @@
 ---
 
 <section
-  class="hero-intro flex min-h-[100svh] flex-col items-center justify-center px-6 py-24 text-center"
+  class="hero-intro flex min-h-svh flex-col items-center justify-center px-6 py-24 text-center relative"
   aria-label="Вступление"
 >
   <h1 class="hero-intro__title font-serif text-[2.5rem] leading-tight text-primary">
     Говорят, случайности не случайны...
   </h1>
-  <p class="hero-intro__sub mt-6 max-w-sm text-base leading-relaxed text-primary/90">
-    Прокрути вниз, чтобы начать нашу историю.
-  </p>
+
+  <div class="hero-intro__sub mt-12 flex flex-col items-center gap-4 w-full max-w-sm">
+    <div class="rounded-3xl border border-accent/30 bg-white/60 p-6 shadow-lg backdrop-blur-md">
+      <p class="text-[1.1rem] leading-relaxed text-primary/90 font-serif">
+        Это наша маленькая история.<br/>
+        <span class="text-accent font-semibold">Включи звук</span>, никуда не торопись и просто
+        <span class="font-semibold">листай вниз</span> до самого конца.
+      </p>
+    </div>
+  </div>
+
   <div
-    class="hero-intro__cue mt-16 flex flex-col items-center gap-2 text-[0.75rem] uppercase tracking-widest text-primary/60"
+    class="hero-intro__cue absolute bottom-12 flex flex-col items-center gap-3 text-[0.75rem] uppercase tracking-widest text-primary/60"
     aria-hidden="true"
   >
-    <span>Дальше</span>
-    <span class="hero-intro__arrow">↓</span>
+    <span>Скролль вниз</span>
+    <div class="flex h-11 w-7 justify-center rounded-full border-2 border-primary/20 pt-2">
+      <div class="hero-intro__wheel h-2.5 w-1 rounded-full bg-accent"></div>
+    </div>
   </div>
 </section>
 
 <style>
+  /* Плавное появление элементов по очереди */
   .hero-intro__title,
   .hero-intro__sub,
   .hero-intro__cue {
     opacity: 0;
-    animation: hero-fade 1.2s ease-out forwards;
+    animation: hero-fade 1.5s ease-out forwards;
   }
 
+  /* Задержки, чтобы текст появлялся как бы "рассказывая" историю */
   .hero-intro__sub {
-    animation-delay: 0.2s;
+    animation-delay: 0.8s;
   }
 
   .hero-intro__cue {
-    animation-delay: 0.5s;
+    animation-delay: 1.8s;
   }
 
-  .hero-intro__arrow {
-    animation: scroll-cue 1.8s ease-in-out infinite;
-    animation-delay: 1s;
+  /* Анимация ползунка внутри мышки (прыгает вниз) */
+  .hero-intro__wheel {
+    animation: scroll-wheel 2s ease-in-out infinite;
   }
 
   @keyframes hero-fade {
     from {
       opacity: 0;
-      transform: translate3d(0, 8px, 0);
+      transform: translate3d(0, 16px, 0);
     }
     to {
       opacity: 1;
@@ -52,18 +64,22 @@
     }
   }
 
-  @keyframes scroll-cue {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0);
-      opacity: 0.5;
+  @keyframes scroll-wheel {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
     }
     50% {
-      transform: translate3d(0, 6px, 0);
-      opacity: 1;
+      transform: translateY(12px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0;
     }
   }
 
+  /* Для тех, у кого отключены анимации в ОС */
   @media (prefers-reduced-motion: reduce) {
     .hero-intro__title,
     .hero-intro__sub,
@@ -73,9 +89,8 @@
       transform: none;
     }
 
-    .hero-intro__arrow {
+    .hero-intro__wheel {
       animation: none;
-      opacity: 1;
     }
   }
 </style>
