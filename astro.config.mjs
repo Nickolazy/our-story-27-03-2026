@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://nickolazy.github.io',
+  site: 'https://Nickolazy.github.io',
   base: '/our-story-27-03-2026/',
   integrations: [react()],
   output: 'static',
