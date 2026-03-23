@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.1",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@types/canvas-confetti": "^1.9.0",
+    "gh-pages": "^6.3.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.1"
   },
