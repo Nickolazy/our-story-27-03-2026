@@ -59,7 +59,7 @@ export default function SpotlightReveal() {
   return (
     <section
       ref={containerRef}
-      className="h-[100svh] w-full bg-[#050505] overflow-hidden flex items-center justify-center relative"
+      className="h-screen w-full bg-[#050505] overflow-hidden flex items-center justify-center relative"
       aria-label="Рассеивание тумана"
     >
       <div

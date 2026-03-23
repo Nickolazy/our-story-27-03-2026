@@ -14,17 +14,14 @@ export default function SwipeReasons() {
   const [exitDir, setExitDir] = useState<number | null>(null);
 
   const advance = useCallback((dir: 'left' | 'right') => {
-    // Если карточки уже закончились, больше не реагируем на свайпы
     if (index >= REASONS.length) return;
 
     setExitDir(dir === 'left' ? -1 : 1);
 
     setTimeout(() => {
       setIndex((i) => {
-        // Теперь позволяем индексу дойти до длины массива (REASONS.length)
         const nextIndex = Math.min(i + 1, REASONS.length);
 
-        // Взрываем конфетти, когда смахнули САМУЮ ПОСЛЕДНЮЮ карточку! 🎉
         if (i === REASONS.length - 1) {
           import('canvas-confetti').then((confetti) => {
             confetti.default({
@@ -45,7 +42,6 @@ export default function SwipeReasons() {
 
   const { dragX, handlers } = useSwipe({ onSwipe: advance, threshold: 100 });
 
-  // Вычисляем, сколько карточек осталось в стопке (не уходим в минус)
   const depth = Math.max(0, Math.min(REASONS.length - index, 3));
 
   return (
@@ -55,9 +51,6 @@ export default function SwipeReasons() {
       </h2>
 
       <div className="relative mx-auto flex h-[400px] w-full max-w-sm flex-1 items-center justify-center">
-
-        {/* ФИНАЛЬНЫЙ ТЕКСТ (Спрятан ПОД карточками)
-            Он плавно появляется, когда индекс равен длине массива (все карточки смахнуты) */}
         <div
           className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-1000 ${
             index >= REASONS.length ? 'opacity-100 z-10' : 'opacity-0 -z-10'
@@ -67,16 +60,14 @@ export default function SwipeReasons() {
           <p className="mt-4 text-primary/70 animate-bounce">Скролль дальше 👇</p>
         </div>
 
-        {/* Контейнер для карточек */}
         <div
-          className="relative h-72 w-full touch-pan-y select-none"
+          className="relative h-72 w-full touch-pan-y select-none mt-12"
           style={{ touchAction: 'pan-y' }}
           {...handlers}
         >
-          {/* Инструкция поверх первой карточки (пока не свайпнул) */}
           {index === 0 && exitDir === null && dragX === 0 && (
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none opacity-60 animate-pulse">
-              <span className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">Смахни в сторону</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-accent font-semibold text-nowrap">Смахни в сторону</span>
             </div>
           )}
 
