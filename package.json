@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/react": "^5.0.1",
     "@gsap/react": "^2.1.2",
+    "@rollup/rollup-win32-x64-msvc": "^4.60.0",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -30,5 +31,6 @@
     "@types/canvas-confetti": "^1.9.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.1"
-  }
+  },
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
