@@ -6,6 +6,8 @@ import TimeStats from '../components/interactive/TimeStats';
 import MemoriesTimeline from '../components/sections/MemoriesTimeline';
 import HorizontalGallery from '../components/interactive/HorizontalGallery';
 import SpotlightReveal from '../components/interactive/SpotlightReveal';
+import ChattingPhase from '../components/interactive/ChattingPhase';
+import StoryChatAndKiss from '../components/interactive/StoryChatAndKiss';
 import VinylPlayer from '../components/interactive/VinylPlayer';
 import JourneyPath from '../components/interactive/JourneyPath';
 import SwipeReasons from '../components/interactive/SwipeReasons';
@@ -43,7 +45,9 @@ const memories = [
     <HeroIntro />
     <VinylPlayer client:visible />
 
-    <MeetingAnimation client:load />
+    <StoryChatAndKiss client:load />
+    <!-- <ChattingPhase client:visible />
+    <MeetingAnimation client:load /> -->
     <TimeStats client:visible />
     <WorldToggle client:visible />
     <MemoriesTimeline memories={memories} client:visible />

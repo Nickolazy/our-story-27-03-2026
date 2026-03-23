@@ -25,37 +25,34 @@ export default function MeetingAnimation() {
       className="relative w-full"
       aria-label="Как мы встретились"
     >
-      {/* Убрали py-24, добавили py-12 и justify-between для идеального распределения по высоте экрана */}
       <div className="flex min-h-[100svh] w-full flex-col items-center justify-between overflow-hidden px-4 py-16">
 
-        {/* ВЕРХ: Заголовок */}
-        <h2 className="text-center font-serif text-[2rem] leading-tight text-primary mt-4">
-          История нашего знакомства
-        </h2>
+        {/* ВЕРХ: Развитие истории */}
+        <div className="mt-4 text-center">
+          <h2 className="font-serif text-[2rem] leading-tight text-primary mb-3">
+            От долгих переписок...
+          </h2>
+          <p className="font-sans text-primary/70 max-w-[280px] mx-auto leading-relaxed">
+            Сутками болтали обо всём на свете, уверенные, что мы просто классные друзья.
+          </p>
+        </div>
 
-        {/* ЦЕНТР: Анимация */}
+        {/* ЦЕНТР: Анимация сближения */}
         <div className="relative flex w-full max-w-md flex-1 items-center justify-center">
 
           {/* КОЛЯ */}
           <div ref={boy} className="absolute z-10 flex flex-col items-center will-change-transform">
             <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-surface shadow-xl backdrop-blur-md">
-              {/* <img src="/kolya.jpg" alt="Коля" className="h-full w-full object-cover" /> */}
               <span className="text-5xl">👨</span>
             </div>
-            {/* <span className="mt-3 font-serif text-xl font-medium text-primary bg-white/50 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-white/40">
-              Коля
-            </span> */}
+            {/* Имена можно вернуть, когда вставишь реальные фото */}
           </div>
 
           {/* МАША */}
           <div ref={girl} className="absolute z-10 flex flex-col items-center will-change-transform">
             <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-surface shadow-xl backdrop-blur-md">
-              {/* <img src="/masha.jpg" alt="Маша" className="h-full w-full object-cover" /> */}
               <span className="text-5xl">👩</span>
             </div>
-            {/* <span className="mt-3 font-serif text-xl font-medium text-primary bg-white/50 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-white/40">
-              Маша
-            </span> */}
           </div>
 
           <div
@@ -74,13 +71,22 @@ export default function MeetingAnimation() {
           </div>
         </div>
 
-        <time
+        {/* НИЗ: Развязка истории (всплывает вместе с датой) */}
+        <div
           ref={date}
-          dateTime="2024-03-22"
-          className="font-serif text-[2.5rem] text-accent opacity-0 mb-4 drop-shadow-sm will-change-[opacity,transform]"
+          className="flex flex-col items-center opacity-0 mb-4 will-change-[opacity,transform]"
         >
-          2 года вместе
-        </time>
+          <p className="font-serif text-[1.25rem] text-primary/80 mb-2">
+            ...до того самого поцелуя. И вот уже:
+          </p>
+          <time
+            dateTime="2024-03-22"
+            className="font-serif text-[2.5rem] text-accent drop-shadow-sm"
+          >
+            2 года вместе
+          </time>
+        </div>
+
       </div>
     </section>
   );

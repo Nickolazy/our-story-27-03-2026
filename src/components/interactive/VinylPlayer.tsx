@@ -15,7 +15,6 @@ export default function VinylPlayer() {
     setIsPlaying(!isPlaying);
   };
 
-  // Слушаем, когда песня закончится, чтобы остановить пластинку
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -25,7 +24,7 @@ export default function VinylPlayer() {
   }, []);
 
   return (
-    <section className="py-24 px-6 flex flex-col items-center justify-center relative w-full overflow-hidden">
+    <section className="min-h-[100svh] py-24 px-6 flex flex-col items-center justify-center relative w-full overflow-hidden">
 
       {/* Кликабельная зона пластинки */}
       <div className="relative cursor-pointer group" onClick={togglePlay}>

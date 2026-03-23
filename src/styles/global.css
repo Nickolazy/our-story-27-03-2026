@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-base: #fff5f5;
+  --color-base: #FFF5F5;
   --color-surface: rgba(255, 255, 255, 0.7);
-  --color-primary: #2d2a2a;
-  --color-accent: #efa8b8;
+  --color-primary: #2D2A2A;
+  --color-accent: #E98099;
 
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
@@ -44,6 +44,11 @@
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 @layer components {

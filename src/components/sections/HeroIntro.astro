@@ -2,19 +2,26 @@
 ---
 
 <section
-  class="hero-intro flex min-h-svh flex-col items-center justify-center px-6 py-24 text-center relative"
+  class="hero-intro flex min-h-[100svh] flex-col items-center justify-center px-6 py-24 text-center relative"
   aria-label="Вступление"
 >
-  <h1 class="hero-intro__title font-serif text-[2.5rem] leading-tight text-primary">
-    Говорят, случайности не случайны...
+  <h1 class="hero-intro__title font-serif text-[2.5rem] md:text-[3.5rem] leading-none text-primary mb-8 tracking-tight drop-shadow-sm">
+    Коля <span class="text-accent italic font-light text-[3rem] md:text-[4rem]">&</span> Маша
   </h1>
 
+  <div class="hero-intro__sub-title mt-6 flex items-center gap-4">
+    <span class="h-px w-8 bg-accent/40 rounded-full"></span>
+    <h2 class="font-serif text-[1.4rem] md:text-[1.6rem] italic text-primary/80 drop-shadow-sm">
+      Это наша маленькая история любви 🤍
+    </h2>
+    <span class="h-px w-8 bg-accent/40 rounded-full"></span>
+  </div>
+
   <div class="hero-intro__sub mt-12 flex flex-col items-center gap-4 w-full max-w-sm">
-    <div class="rounded-3xl border border-accent/30 bg-white/60 p-6 shadow-lg backdrop-blur-md">
+    <div class="rounded-3xl border border-accent/30 bg-white/50 p-6 shadow-lg backdrop-blur-md">
       <p class="text-[1.1rem] leading-relaxed text-primary/90 font-serif">
-        Это наша маленькая история.<br/>
         <span class="text-accent font-semibold">Включи звук</span>, никуда не торопись и просто
-        <span class="font-semibold">листай вниз</span> до самого конца.
+        <span class="font-bold">листай вниз</span> до самого конца.
       </p>
     </div>
   </div>
@@ -23,7 +30,7 @@
     class="hero-intro__cue absolute bottom-12 flex flex-col items-center gap-3 text-[0.75rem] uppercase tracking-widest text-primary/60"
     aria-hidden="true"
   >
-    <span>Скролль вниз</span>
+    <span>Листай вниз</span>
     <div class="flex h-11 w-7 justify-center rounded-full border-2 border-primary/20 pt-2">
       <div class="hero-intro__wheel h-2.5 w-1 rounded-full bg-accent"></div>
     </div>
@@ -31,24 +38,32 @@
 </section>
 
 <style>
-  /* Плавное появление элементов по очереди */
+  /* Вернул класс для анимации заголовка с именами */
   .hero-intro__title,
+  .hero-intro__sub-title,
   .hero-intro__sub,
   .hero-intro__cue {
     opacity: 0;
     animation: hero-fade 1.5s ease-out forwards;
   }
 
-  /* Задержки, чтобы текст появлялся как бы "рассказывая" историю */
+  /* Настраиваем лесенку задержек */
+  .hero-intro__title {
+    animation-delay: 0.2s; /* Имена появляются почти сразу */
+  }
+
+  .hero-intro__sub-title {
+    animation-delay: 1s; /* "Наша история" всплывает чуть позже */
+  }
+
   .hero-intro__sub {
-    animation-delay: 0.8s;
+    animation-delay: 1.8s; /* Плашка с правилами */
   }
 
   .hero-intro__cue {
-    animation-delay: 1.8s;
+    animation-delay: 2.8s; /* Колесико скролла */
   }
 
-  /* Анимация ползунка внутри мышки (прыгает вниз) */
   .hero-intro__wheel {
     animation: scroll-wheel 2s ease-in-out infinite;
   }
@@ -79,9 +94,9 @@
     }
   }
 
-  /* Для тех, у кого отключены анимации в ОС */
   @media (prefers-reduced-motion: reduce) {
     .hero-intro__title,
+    .hero-intro__sub-title,
     .hero-intro__sub,
     .hero-intro__cue {
       animation: none;
