@@ -2,6 +2,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
+import kolya from '../../assets/avatars/kolya.png'
+import masha from '../../assets/avatars/masha.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +124,8 @@ export default function StoryChatAndKiss() {
         <div ref={boyRef} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 will-change-[left,transform]">
           <div ref={boyInnerRef}>
             <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center overflow-hidden rounded-full border-[3px] md:border-4 border-white bg-surface shadow-xl backdrop-blur-md">
-              <span className="text-3xl md:text-4xl">👨</span>
+              {/* <span className="text-3xl md:text-4xl">👨</span> */}
+              <img src={kolya.src} alt="kolya" className="w-full object-cover" />
             </div>
           </div>
         </div>
@@ -130,7 +133,8 @@ export default function StoryChatAndKiss() {
         <div ref={girlRef} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 will-change-[right,transform]">
           <div ref={girlInnerRef}>
             <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center overflow-hidden rounded-full border-[3px] md:border-4 border-white bg-surface shadow-xl backdrop-blur-md">
-              <span className="text-3xl md:text-4xl">👩</span>
+              {/* <span className="text-3xl md:text-4xl">👩</span> */}
+              <img src={masha.src} alt="kolya" className="w-full object-cover" />
             </div>
           </div>
         </div>
