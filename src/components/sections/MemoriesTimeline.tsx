@@ -6,75 +6,103 @@ import { PolaroidCard, type PolaroidMemory } from '../ui/PolaroidCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Props = {
-  memories: PolaroidMemory[];
+export type MemoryChapter = {
+  id: string;
+  title: string;
+  subtitle?: string;
+  photos: (PolaroidMemory & { rotate?: string })[];
 };
 
-export default function MemoriesTimeline({ memories }: Props) {
-  const root = useRef<HTMLElement>(null);
+type Props = {
+  chapters: MemoryChapter[];
+};
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
+export default function MemoriesTimeline({ chapters }: Props) {
+  const rootRef = useRef<HTMLElement>(null);
 
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        const wraps = root.current?.querySelectorAll('[data-polaroid]');
-        wraps?.forEach((node) => {
-          gsap.set(node, { opacity: 1, y: 0 });
-        });
-      });
+  useGSAP(() => {
+    const root = rootRef.current;
+    if (!root) return;
 
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const wraps = root.current?.querySelectorAll<HTMLElement>('[data-polaroid]');
-        if (!wraps?.length) return;
+    const mm = gsap.matchMedia();
 
-        const animations = Array.from(wraps).map((wrap) =>
-          gsap.fromTo(
-            wrap,
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: wrap,
-                start: 'top 90%',
-                end: 'top 60%',
-                scrub: 0.8,
-              },
-            },
-          ),
-        );
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const cards = gsap.utils.toArray('.scrapbook-card');
 
-        return () => {
-          animations.forEach((a) => {
-            a.scrollTrigger?.kill();
-            a.kill();
+      gsap.set(cards, { opacity: 0, y: 60, scale: 0.95 });
+
+      ScrollTrigger.batch(cards, {
+        start: 'top 85%',
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.15,
+            ease: 'back.out(1.2)',
+            duration: 0.8,
+            overwrite: true,
           });
-        };
+        },
       });
+    });
 
-      return () => {
-        mm.revert();
-      };
-    },
-    { scope: root, dependencies: [memories.length] },
-  );
+    return () => mm.revert();
+  }, { scope: rootRef });
 
   return (
     <section
-      ref={root}
-      className="flex w-full flex-col gap-16 px-4 py-32"
-      aria-label="Галерея воспоминаний"
+      ref={rootRef}
+      className="flex w-full flex-col px-4 py-24 bg-base"
+      aria-label="Наш альбом"
     >
-      <h2 className="text-center font-serif text-[2rem] leading-tight text-primary">
-        Давай вспомним наши самые яркие моменты
-      </h2>
-      {memories.map((memory) => (
-        <div key={`${memory.date}-${memory.caption}`} data-polaroid className="will-change-transform">
-          <PolaroidCard memory={memory} />
-        </div>
-      ))}
+      <div className="w-full max-w-lg mx-auto mb-10 text-center">
+        <h2 className="font-serif text-[2.5rem] leading-tight text-primary drop-shadow-sm">
+          Главы нашей истории
+        </h2>
+        <p className="mt-4 font-sans text-primary/70">
+          Каждый миг с тобой — мой самый любимый.
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-16 w-full max-w-2xl mx-auto">
+        {chapters.map((chapter) => (
+          <div key={chapter.id} className="relative w-full flex flex-col">
+
+            {/* Липкий заголовок главы */}
+            <div className="sticky top-4 z-30 mb-12 flex flex-col items-center md:items-start pointer-events-none">
+              <div className="bg-white/80 backdrop-blur-md px-6 py-3 rounded-2xl shadow-sm border border-accent/20 transform rotate-[-1deg]">
+                <h3 className="font-serif text-2xl text-primary m-0">
+                  {chapter.title}
+                </h3>
+                {chapter.subtitle && (
+                  <span className="font-sans text-sm text-accent tracking-wide uppercase mt-1 block">
+                    {chapter.subtitle}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Сетка фотографий */}
+            <div className="columns-1 md:columns-2 gap-6 space-y-8 w-full px-2 md:px-0">
+              {chapter.photos.map((photo, idx) => {
+                const rotation = photo.rotate || (idx % 2 === 0 ? '-2deg' : '2deg');
+
+                return (
+                  <div
+                    key={`${chapter.id}-photo-${idx}`}
+                    className="scrapbook-card break-inside-avoid relative transform-gpu will-change-[opacity,transform]"
+                    style={{ transform: `rotate(${rotation})` }}
+                  >
+                    <PolaroidCard memory={photo} />
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -2,15 +2,15 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
+import { PolaroidCard, type PolaroidMemory } from '../ui/PolaroidCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PHOTOS = [
-  '📸 Фото 1', '📸 Фото 2', '📸 Фото 3',
-  '📸 Фото 4', '📸 Фото 5', '📸 Фото 6'
-];
+type Props = {
+  photos: PolaroidMemory[];
+};
 
-export default function HorizontalGallery() {
+export default function HorizontalGallery({ photos }: Props) {
   const containerRef = useRef<HTMLElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -22,13 +22,19 @@ export default function HorizontalGallery() {
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const getScrollAmount = () => {
+        const wrapperWidth = scrollWrapper.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        return -(wrapperWidth - viewportWidth + 48);
+      };
+
       gsap.to(scrollWrapper, {
-        x: () => -(scrollWrapper.scrollWidth - window.innerWidth + 48),
+        x: getScrollAmount,
         ease: 'none',
         scrollTrigger: {
           trigger: container,
           start: 'top top',
-          end: '+=200%',
+          end: () => `+=${scrollWrapper.scrollWidth}`,
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
@@ -37,29 +43,41 @@ export default function HorizontalGallery() {
     });
 
     return () => mm.revert();
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [photos.length] }); // Обновляем логику, если количество фоток изменится
 
   return (
-    <section ref={containerRef} className="h-[100svh] w-full flex flex-col justify-center overflow-hidden bg-base relative" aria-label="Альбом">
-      <h2 className="absolute top-16 left-0 w-full text-center font-serif text-[2rem] text-primary z-10 drop-shadow-sm">
-        Каждый миг с тобой
+    <section
+      ref={containerRef}
+      className="relative flex h-[100svh] w-full flex-col justify-center overflow-hidden bg-base"
+      aria-label="Горизонтальный альбом"
+    >
+      {/* Заголовок плавно "висит" над галереей */}
+      <h2 className="absolute left-0 top-16 z-20 w-full text-center font-serif text-[2rem] leading-tight text-primary drop-shadow-sm pointer-events-none">
+        Наш вайб
       </h2>
 
       <div
         ref={scrollWrapperRef}
-        className="flex gap-6 px-6 items-center h-[60vh] mt-10 w-max will-change-transform"
+        className="mt-12 flex h-auto w-max items-center gap-6 px-6 py-12 will-change-transform"
       >
-        {PHOTOS.map((photo, i) => (
-          <div
-            key={i}
-            className={`w-[75vw] max-w-[300px] aspect-[4/5] shrink-0 rounded-lg bg-white shadow-xl border border-accent/20 p-3 transform transition-transform hover:scale-105 ${i % 2 === 0 ? 'rotate-[-2deg]' : 'rotate-[2deg]'}`}
-          >
-            <div className="w-full h-full bg-rose-50 rounded-md flex items-center justify-center text-primary/50 overflow-hidden relative">
-              {/* Замени на <img src={...} class="w-full h-full object-cover" /> */}
-              {photo}
+        {photos.map((photo, idx) => {
+          const rotation = idx % 2 === 0 ? 'rotate-[-3deg]' : 'rotate-[3deg]';
+          const offsetY = idx % 2 === 0 ? '-translate-y-4' : 'translate-y-4';
+
+          return (
+            <div
+              key={`horiz-${idx}`}
+              className={`w-[75vw] max-w-[320px] shrink-0 transform-gpu transition-all duration-500 hover:z-10 hover:scale-[1.02] hover:rotate-0 hover:translate-y-0 ${rotation} ${offsetY}`}
+            >
+              <PolaroidCard memory={photo} />
             </div>
-          </div>
-        ))}
+          );
+        })}
+      </div>
+
+      {/* Подсказка для скролла */}
+      <div className="absolute bottom-12 left-0 z-20 w-full text-center text-primary/40 text-sm animate-pulse pointer-events-none">
+        Листай дальше →
       </div>
     </section>
   );

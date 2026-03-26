@@ -24,12 +24,12 @@ export function PolaroidCard({ memory, className = '' }: Props) {
           width={memory.width}
           height={memory.height}
           alt={memory.alt}
-          className="aspect-[4/3] w-full object-cover"
+          className="aspect-auto w-full object-cover"
           loading="lazy"
           decoding="async"
         />
       </div>
-      <p className="mt-3 font-serif text-[1.25rem] leading-snug text-primary">
+      <p className="mt-3 font-serif text-[1.25rem] text-center leading-snug text-primary">
         {memory.caption}
       </p>
       <time

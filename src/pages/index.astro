@@ -1,43 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroIntro from '../components/sections/HeroIntro.astro';
-import MeetingAnimation from '../components/interactive/MeetingAnimation';
 import TimeStats from '../components/interactive/TimeStats';
 import MemoriesTimeline from '../components/sections/MemoriesTimeline';
 import HorizontalGallery from '../components/interactive/HorizontalGallery';
 import SpotlightReveal from '../components/interactive/SpotlightReveal';
-import ChattingPhase from '../components/interactive/ChattingPhase';
 import StoryChatAndKiss from '../components/interactive/StoryChatAndKiss';
 import VinylPlayer from '../components/interactive/VinylPlayer';
 import JourneyPath from '../components/interactive/JourneyPath';
 import SwipeReasons from '../components/interactive/SwipeReasons';
 import WorldToggle from '../components/interactive/WorldToggle';
 import HoldToReveal from '../components/interactive/HoldToReveal';
-import FinalLetter from '../components/sections/FinalLetter';
 import StoryContinues from '../components/interactive/StoryContinues';
-import astroImg from '../assets/astro.svg';
-import bgImg from '../assets/background.svg';
 
-const memories = [
-  {
-    src: astroImg.src,
-    width: astroImg.width,
-    height: astroImg.height,
-    alt: 'Заглушка вместо личного фото — замени своим снимком.',
-    caption: 'Первый кадр, который хочется хранить.',
-    date: '2023-03-01',
-    dateLabel: 'Март 2023',
-  },
-  {
-    src: bgImg.src,
-    width: bgImg.width,
-    height: bgImg.height,
-    alt: 'Заглушка вместо личного фото — замени своим снимком.',
-    caption: 'Тёплый вечер и общий смех.',
-    date: '2023-07-15',
-    dateLabel: 'Июль 2023',
-  },
-];
+import { chapters } from '../components/ui/Chapters';
+import { galleryPhotos } from '../components/ui/GalleryPhotos';
 ---
 
 <Layout title="Наша история">
@@ -50,12 +27,12 @@ const memories = [
     <MeetingAnimation client:load /> -->
     <TimeStats client:visible />
     <WorldToggle client:visible />
-    <MemoriesTimeline memories={memories} client:visible />
+    <MemoriesTimeline chapters={chapters} client:visible />
   </div>
 
   <SpotlightReveal client:visible />
 
-  <HorizontalGallery client:visible />
+  <HorizontalGallery photos={galleryPhotos} client:visible />
 
   <div class="mx-auto w-full max-w-md">
     <JourneyPath client:visible />

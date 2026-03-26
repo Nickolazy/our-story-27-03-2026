@@ -48,7 +48,7 @@ export default function StoryContinues() {
       <div ref={contentRef} className="w-full max-w-md flex flex-col items-center text-center">
 
         <p className="font-serif text-[1.25rem] leading-relaxed text-primary mb-8">
-          В этой истории пока написаны<br/>только две главы.
+          В этой истории пока написаны<br/>только несколько глав.
         </p>
 
         <p className="font-serif text-[1.25rem] leading-relaxed text-primary mb-16">
