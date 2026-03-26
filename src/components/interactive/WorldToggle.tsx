@@ -15,7 +15,7 @@ export default function WorldToggle() {
 
       <section className="py-32 flex flex-col items-center justify-center text-center px-4 relative z-10" aria-label="Переключатель мира">
         <h2 className="font-serif text-[1.75rem] text-primary mb-8 transition-colors duration-1000">
-          Мой мир:
+          Посмотри на мой мир
           <br />
           <span className={`font-serif text-[2.25rem] ${withYou ? 'text-accent' : 'text-primary/50'}`}>
             {withYou ? 'С тобой' : 'Без тебя'}

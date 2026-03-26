@@ -67,7 +67,7 @@ export default function VinylPlayer() {
       </p>
 
       {/* НЕ ЗАБУДЬ ПОЛОЖИТЬ ФАЙЛ 'our-song.mp3' В ПАПКУ /public */}
-      <audio ref={audioRef} src="/my-love.mp3" preload="metadata" />
+      <audio ref={audioRef} src={`${import.meta.env.BASE_URL}/my-love.mp3`} preload="metadata" />
     </section>
   );
 }

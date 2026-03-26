@@ -11,12 +11,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     server: {
       host: true,
-      allowedHosts: 'all',
-      hmr: {
-        protocol: 'wss',
-        clientPort: 443
-      },
-      origin: 'https://localhost:4321'
+      allowedHosts: 'all'
     },
     preview: {
       host: true,

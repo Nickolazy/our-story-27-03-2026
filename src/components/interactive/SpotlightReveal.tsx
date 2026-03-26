@@ -81,9 +81,9 @@ export default function SpotlightReveal() {
 
         <h2
           ref={text1Ref}
-          className="text-[2.25rem] md:text-[2.5rem] font-serif text-white/90 leading-tight tracking-wide will-change-transform absolute"
+          className="text-[2.25rem] md:text-[2.5rem] px-2.5 font-serif text-white/90 leading-tight tracking-wide will-change-transform absolute"
         >
-          До встречи с тобой<br/>всё было как в тумане...
+          Знаешь, до встречи с тобой<br/>всё было как в тумане...
         </h2>
 
         <div

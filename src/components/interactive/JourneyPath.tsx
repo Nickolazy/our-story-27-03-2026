@@ -70,13 +70,13 @@ export default function JourneyPath() {
         </svg>
 
         {/* Остановки (Milestones). Позиционируем абсолютно поверх кривой */}
-        <div className="absolute top-[10%] left-[65%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-lg shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
+        <div className="absolute top-[10%] left-[65%] z-10 flex h-12 w-12 items-center justify-center rounded-full bg-surface text-xl shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
           👀
         </div>
-        <div className="absolute top-[50%] left-[35%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-lg shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
+        <div className="absolute top-[50%] left-[35%] z-10 flex h-12 w-12 items-center justify-center rounded-full bg-surface text-xl shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
           ✈️
         </div>
-        <div className="absolute top-[85%] left-[50%] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-lg shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
+        <div className="absolute top-[85%] left-[50%] z-10 flex h-12 w-12 items-center justify-center rounded-full bg-surface text-xl shadow-md backdrop-blur-md border border-accent/30 hover:scale-110 transition-transform">
           💍
         </div>
 

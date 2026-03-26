@@ -68,7 +68,7 @@ export default function MemoriesTimeline({ memories }: Props) {
       aria-label="Галерея воспоминаний"
     >
       <h2 className="text-center font-serif text-[2rem] leading-tight text-primary">
-        Наши моменты
+        Давай вспомним наши самые яркие моменты
       </h2>
       {memories.map((memory) => (
         <div key={`${memory.date}-${memory.caption}`} data-polaroid className="will-change-transform">

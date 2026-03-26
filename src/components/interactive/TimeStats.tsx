@@ -12,10 +12,10 @@ const SERIOUS_STATS = [
 ];
 
 const FUNNY_STATS = [
-  { value: '15 000', label: 'отправленных друг другу рилсов с индусами и собачками' },
-  { value: '4 592', label: 'раза мы назвали друг друга «писюшкой»' },
+  { value: '15 000', label: 'рилсов с индусами и собачками' },
+  { value: '4 592', label: 'раз произнесено слово «писюшка»' },
   { value: '365', label: 'ночей беспощадной борьбы за одеяло (после которой я сплю без него)' },
-  { value: '24', label: 'напоминания от Алисы про то, что «Коля кукольдик»' },
+  { value: '24', label: 'напоминания от Алисы, что «Коля кукольдик»' },
 ];
 
 const FINAL_STAT = { value: '1', label: 'самая большая любовь на свете' };
@@ -59,7 +59,7 @@ export default function TimeStats() {
       aria-label="Статистика любви"
     >
       <div className="max-w-md w-full flex flex-col gap-16 items-center">
-        <h2 className="animate-stat text-center font-sans text-sm uppercase tracking-[0.3em] text-accent mb-4 will-change-transform">
+        <h2 className="animate-stat text-center font-sans font-medium text-sm uppercase tracking-[0.3em] text-accent mb-4 will-change-transform">
           Это много или мало?
         </h2>
 
@@ -96,6 +96,14 @@ export default function TimeStats() {
             <div className="w-12 h-[1px] bg-accent/30 mt-16" />
           </div>
         ))}
+
+        <div className="animate-stat flex items-center justify-center gap-6 my-4 w-full will-change-transform">
+          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-accent/40" />
+          <span className="font-serif text-[1.5rem] italic text-primary/60">
+            И конечно же...
+          </span>
+          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-accent/40" />
+        </div>
 
         <div className="animate-stat flex flex-col items-center text-center will-change-transform w-full mt-8">
           <span className="font-serif text-[5rem] leading-none text-accent mb-4 drop-shadow-md transform scale-110">

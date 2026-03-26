@@ -26,7 +26,7 @@ export default function StoryContinues() {
           opacity: 1,
           y: 0,
           duration: 1.5,
-          stagger: 1.2, // Медленное, томящее появление
+          stagger: 1.2,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: section,
@@ -69,8 +69,8 @@ export default function StoryContinues() {
             </span>
           </p>
         </div>
-        
-        <div className="absolute bottom-0 right-0">
+
+        <div className="absolute bottom-4 right-4">
           <p className="font-serif text-[1rem] text-right leading-relaxed text-primary px-2">
             С любовью, твой сладкий Коля<br />27.03.2026
           </p>
